@@ -1,35 +1,120 @@
-# Soil Organic Carbon (SOC) Prediction for Matto Grosso, Brazil
-This project focuses on predicting Soil Organic Carbon (SOC) values through spatial data analysis and machine learning techniques. The workflow encompasses data preprocessing, exploratory data analysis (EDA), ordinary least squares (OLS) regression, and random forest regression.
+# **Soil Organic Carbon (SOC) Prediction for Mato Grosso, Brazil**
+
+This project presents a spatial modeling framework for predicting **Soil Organic Carbon (SOC)** concentrations across **Mato Grosso, Brazil**, using machine learning techniques and Earth observation data. The study integrates field-sampled SOC data with environmental predictors extracted from **Google Earth Engine (GEE)** to build a Random Forest model over a large-scale area (\~**950,000 km²**), representing one of the most agriculturally dynamic regions of the Brazilian Cerrado.
 
 
-## Overview
-This project is a journey through data-driven discovery and predictive modeling. By seamlessly integrating data preprocessing, exploratory data analysis (EDA), ordinary least squares (OLS) regression, and random forest regression, we aim to construct a robust model that captures the essence of SOC dynamics within this diverse and vital ecosystem.
+## **Study Area**
 
-## Usage
-The heart of the project lies in the Jupyter Notebook `soc_prediction_v2.ipynb`. Dive into the notebook, where each step unfolds the secrets hidden in the data. From loading spatial data to conducting EDA, OLS regression, and training machine learning models, every section is a window into the fascinating world of soil science and data-driven insights.
+**Mato Grosso** is a vast state in central-western Brazil and one of the most significant regions in the **Brazilian Cerrado biome**, known for its biodiversity and intense agricultural expansion. The area spans diverse land use patterns—from croplands and pastures to natural savannas—making it a vital landscape for studying carbon storage potential and land degradation. This work focuses on modeling SOC dynamics across the entire state (\~950,000 km²).
 
-Evaluate the model using metrics such as R-squared, RMSE, and MAE, gaining a comprehensive understanding of its predictive capabilities. Witness the power of machine learning as you predict SOC values for new locations, using the knowledge gleaned from the trained model.
 
-## Data
-Our dataset is a rich collection of spatial information, including:
-- `sampling_points.shp`: A shapefile containing sampling points with associated SOC values.
-- `Matto_Grosso.shp`: A shapefile delineating the study area boundary.
-- `predictive_dataset_label.shp`: A shapefile equipped with features crucial for predicting SOC values.
+## **Workflow Architecture**
 
-## Results
-The culmination of our efforts reveals compelling insights:
-- The trained random forest regression model stands out with its high accuracy in predicting SOC values.
-- A deep dive into feature importance analysis sheds light on the key predictors driving SOC dynamics.
+The pipeline integrates geospatial data processing, field validation, and model-driven prediction.
 
-## Predictions
-Take the model beyond its training grounds and apply it to new locations (`predictive_dataset_label.shp`). Watch as the predictions unfold, with results neatly organized in `predicted_data.csv` and visually brought to life in `soc_pred.geojson`.
+![Workflow Diagram](flowchart.png)
 
-## Clone the Repository
-Ready to explore further? Clone the repository using the following command:
+
+## **Methodology**
+
+### 1. **Field Data Collection**
+
+SOC values were collected from soil samples across representative sites in Mato Grosso. These values were geocoded and stored as point shapefiles (`sampling_points.shp`), covering various land use types.
+
+### 2. **Predictor Variable Extraction (Google Earth Engine)**
+
+Using **Google Earth Engine (GEE)**, multi-temporal and environmental predictor variables were extracted for the study area:
+
+* **Land cover** (from MODIS and ESA datasets)
+* **Topographic attributes** (elevation and slope from SRTM)
+* **Climate data** (monthly temperature and precipitation)
+* **Remote sensing indices**: NDVI (Normalized Difference Vegetation Index), BSI (Bare Soil Index)
+
+All rasters were resampled to a uniform spatial resolution and aligned to the study grid.
+
+### 3. **Modeling Approach**
+
+* **Exploratory Data Analysis (EDA)** and **OLS regression** were first conducted to evaluate the relationships between SOC and environmental variables.
+* A **Random Forest regression model** was trained using 70% of the sample data and validated on the remaining 30%.
+* Key metrics: **R²**, **RMSE**, and **MAE** were computed to evaluate model performance.
+
+### 4. **Prediction**
+
+The trained model was applied to unsampled locations using the `predictive_dataset_label.shp` grid. Outputs were exported as:
+
+* `predicted_data.csv` – SOC values for new locations
+* `soc_pred.geojson` – Spatial map for visualization
+
+
+
+## **Data Description**
+
+| File                           | Description                                            |
+| ------------------------------ | ------------------------------------------------------ |
+| `sampling_points.shp`          | Georeferenced field SOC measurements                   |
+| `Matto_Grosso.shp`             | Administrative boundary of the study area              |
+| `predictive_dataset_label.shp` | Prediction grid with extracted variables for inference |
+
+
+
+## **Results**
+
+* The **Random Forest model** demonstrated high accuracy in predicting SOC distribution across the state.
+* **Feature importance analysis** identified **NDVI, slope, rainfall**, and **elevation** as major contributors.
+* The prediction provides a powerful visual and analytical tool for guiding land management and restoration strategies in the Cerrado.
+
+
+
+## **Visual Outputs**
+
+### **Land Use Map**
+
+![Land Use](maps/landuse.jpg)
+[Full Image](maps/landuse.jpg)
+
+### **Terrain Map (Slope & Elevation)**
+
+![Terrain](maps/Map1.jpg)
+[Full Image](maps/Map1.jpg)
+
+### **Remote Sensing Indices (NDVI and BSI)**
+
+![RS Indices](maps/Map3.jpg)
+[Full Image](maps/Map3.jpg)
+
+### **Climate Variables (Rainfall & Temperature)**
+
+![Climate](maps/map4.jpg)
+[Full Image](maps/map4.jpg)
+
+### **Predicted SOC Map**
+
+![Predicted SOC](Maps/Predicted_SOC.jpg)
+
+
+
+## **Usage**
+
+1. Open the Jupyter Notebook `soc_prediction_v2.ipynb`.
+2. Follow the steps from data loading, preprocessing, and exploratory analysis to model training and spatial prediction.
+3. View and export results for further analysis or visualization in GIS platforms.
+
+To clone this repository:
 
 ```bash
-git clone https://github.com/your-username/your-repository.git
+git clone https://github.com/sammygis/matto-grosso-soc-prediction.git
 ```
 
-## Acknowledgments
-This project draws inspiration from the insightful [Hydroinformatics blog post](https://medium.com/hydroinformatics/towards-urban-flood-susceptibility-mapping-using-machine-and-deep-learning-models-3-random-9fe4e1279f3b).
+
+## **References**
+
+1. **Nwaogu, C., Diagi, B.E., Ekweogu, C.V. et al.** (2024). *Soil organic carbon stocks as driven by land use in Mato Grosso State: the Brazilian Cerrado agricultural frontier.* **Discover Sustainability**, 5, 382. [https://doi.org/10.1007/s43621-024-00592-w](https://doi.org/10.1007/s43621-024-00592-w)
+
+   > **This paper was published as a direct result of this research.**
+
+
+## **Acknowledgments**
+
+This work was inspired in part by [Hydroinformatics: Urban Flood Susceptibility Mapping](https://medium.com/hydroinformatics/towards-urban-flood-susceptibility-mapping-using-machine-and-deep-learning-models-3-random-9fe4e1279f3b), which guided the integration of Earth observation and machine learning.
+
+
