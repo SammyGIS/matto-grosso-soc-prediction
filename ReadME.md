@@ -22,7 +22,7 @@ Key environmental variables used as predictors included:
 
 The pipeline integrates geospatial data processing, field validation, and model-driven prediction.
 
-![Workflow Diagram](flowchart.png)
+![Workflow Diagram](images/flowchart.png)
 
 
 ## **Methodology**
@@ -79,31 +79,31 @@ The trained model was applied to unsampled locations using the `predictive_datas
 
 ### **Land Use Map**
 
-![Land Use](Maps/landuse.jpg)
+![Land Use](images/landuse.jpg)
 
 
 ### **Terrain Map (Slope & Elevation)**
 
-![Terrain](Maps/Map1.jpg)
+![Terrain](images/Map1.jpg)
 
 
 ### **Remote Sensing Indices (NDVI and BSI)**
 
-![RS Indices](Maps/Map3.jpg)
+![RS Indices](images/Map3.jpg)
 
 
 ### **Climate Variables (Rainfall & LST)**
 
-![Climate](Maps/map4.jpg)
+![Climate](images/map4.jpg)
 
 
 ### **Predicted SOC Map**
 
-![Predicted SOC](Maps/Predicted_SOC.jpg)
+![Predicted SOC](images/Predicted_SOC.jpg)
 
 ## Model Importance
 
-![Model Importance](model_importance.jpg)
+![Model Importance](images/model_importance.jpg)
 
 # Importance of the Study to Forestry and Agriculture/Food Security
 
