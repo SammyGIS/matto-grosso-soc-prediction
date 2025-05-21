@@ -1,11 +1,21 @@
 # **Soil Organic Carbon (SOC) Prediction for Mato Grosso, Brazil**
 
-This project presents a spatial modeling framework for predicting **Soil Organic Carbon (SOC)** concentrations across **Mato Grosso, Brazil**, using machine learning techniques and Earth observation data. The study integrates field-sampled SOC data with environmental predictors extracted from **Google Earth Engine (GEE)** to build a Random Forest model over a large-scale area (\~**950,000 km²**), representing one of the most agriculturally dynamic regions of the Brazilian Cerrado.
+This project presents a spatial modeling framework for predicting Soil Organic Carbon (SOC) concentrations across Mato Grosso, Brazil, using machine learning techniques and Earth observation data. The study integrates field-sampled SOC data with environmental predictors extracted from Google Earth Engine (GEE) to build a Random Forest model using Python’s scikit-learn library. The model was trained over a large-scale area (~950,000 km²), representing one of the most agriculturally dynamic regions of the Brazilian Cerrado. Key environmental variables used as predictors included Land Surface Temperature (LST), rainfall, elevation, slope, Normalized Difference Vegetation Index (NDVI), Bare Soil Index (BSI), and land use. The feature importance analysis revealed that LST (31%), rainfall (28%), and elevation (26%) were the most influential in predicting SOC, emphasizing the dominant role of climate and terrain in SOC distribution. Variables like NDVI, BSI, and land use had lower contributions, indicating that vegetation and surface indices alone do not fully account for SOC variability across the landscape. The model operated at a spatial resolution suitable for regional-scale analysis. This approach demonstrates the effectiveness of combining remote sensing data from GEE and Python-based machine learning tools to inform soil health assessment and land management strategies. The results from this study have been published, confirming the robustness and scientific relevance of the methodology.
 
 
 ## **Study Area**
 
 **Mato Grosso** is a vast state in central-western Brazil and one of the most significant regions in the **Brazilian Cerrado biome**, known for its biodiversity and intense agricultural expansion. The area spans diverse land use patterns—from croplands and pastures to natural savannas—making it a vital landscape for studying carbon storage potential and land degradation. This work focuses on modeling SOC dynamics across the entire state (\~950,000 km²).
+
+## Environmental Predictors
+Key environmental variables used as predictors included:
+- Land Surface Temperature (LST)
+- Rainfall
+- Elevation
+- Slope
+- Normalized Difference Vegetation Index (NDVI)
+- Bare Soil Index (BSI)
+- Land use
 
 
 ## **Workflow Architecture**
@@ -82,7 +92,7 @@ The trained model was applied to unsampled locations using the `predictive_datas
 ![RS Indices](maps/Map3.jpg)
 [Full Image](maps/Map3.jpg)
 
-### **Climate Variables (Rainfall & Temperature)**
+### **Climate Variables (Rainfall & LST)**
 
 ![Climate](maps/map4.jpg)
 [Full Image](maps/map4.jpg)
@@ -91,6 +101,17 @@ The trained model was applied to unsampled locations using the `predictive_datas
 
 ![Predicted SOC](Maps/Predicted_SOC.jpg)
 
+## Model Importance
+
+![Model Importance](model_importance.jpg)
+
+# Importance of the Study to Forestry and Agriculture/Food Security
+
+- **Improved Soil Health Assessment:** Enables accurate evaluation of soil fertility crucial for sustainable forestry and agriculture.  
+- **Climate and Terrain Influence Understanding:** Reveals key environmental factors guiding tailored land management decisions.  
+- **Support for Sustainable Land Use Planning:** Helps prioritize areas for conservation, reforestation, and agricultural improvement.  
+- **Enhanced Crop Yield and Forest Growth Predictions:** Links SOC to nutrient and water availability for better productivity forecasts.  
+- **Integration of Remote Sensing for Large-Scale Monitoring:** Provides cost-effective, large-area soil condition monitoring to aid timely decisions.
 
 
 ## **Usage**
