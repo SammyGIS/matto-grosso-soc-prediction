@@ -79,23 +79,23 @@ The trained model was applied to unsampled locations using the `predictive_datas
 
 ### **Land Use Map**
 
-![Land Use](maps/landuse.jpg)
-[Full Image](maps/landuse.jpg)
+![Land Use](Maps/landuse.jpg)
+
 
 ### **Terrain Map (Slope & Elevation)**
 
-![Terrain](maps/Map1.jpg)
-[Full Image](maps/Map1.jpg)
+![Terrain](Maps/Map1.jpg)
+
 
 ### **Remote Sensing Indices (NDVI and BSI)**
 
-![RS Indices](maps/Map3.jpg)
-[Full Image](maps/Map3.jpg)
+![RS Indices](Maps/Map3.jpg)
+
 
 ### **Climate Variables (Rainfall & LST)**
 
-![Climate](maps/map4.jpg)
-[Full Image](maps/map4.jpg)
+![Climate](Maps/map4.jpg)
+
 
 ### **Predicted SOC Map**
 
